@@ -65,8 +65,9 @@ section {
 
     div.todo {
         display: flex;
-        width: 30vw;
-        padding: 0.5rem;
+        width: 50vw;
+        margin: 0.2rem 0rem;
+        transition: all 0.5s;
 
         p {
             background-color: white;
@@ -92,13 +93,19 @@ section {
         }
 
         button.complete {
-            background-color: rgb(21, 185, 21);
+            background-color: green;
             color: white;
+            &:hover {
+                background-color: rgb(27, 200, 27);
+            }
         }
 
         button.trashcan {
             background-color: red;
             color: white;
+            &:hover {
+                background-color: rgb(255, 91, 91);
+            }
         }
     }
 }
@@ -107,10 +114,20 @@ i {
     pointer-events: none;
 }
 
+.done {
+    opacity: 0.5;
+}
+
 @keyframes scaleUp {
     from {
         transform: scale(0);
     } to {
         transform: scale(1);
+    }
+}
+
+@keyframes scaleDown {
+    to {
+        transform: scale(0);
     }
 }

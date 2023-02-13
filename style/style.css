@@ -59,8 +59,9 @@ section {
 }
 section div.todo {
   display: flex;
-  width: 30vw;
-  padding: 0.5rem;
+  width: 50vw;
+  margin: 0.2rem 0rem;
+  transition: all 0.5s;
 }
 section div.todo p {
   background-color: white;
@@ -82,16 +83,26 @@ section div.todo button {
   cursor: pointer;
 }
 section div.todo button.complete {
-  background-color: rgb(21, 185, 21);
+  background-color: green;
   color: white;
+}
+section div.todo button.complete:hover {
+  background-color: rgb(27, 200, 27);
 }
 section div.todo button.trashcan {
   background-color: red;
   color: white;
 }
+section div.todo button.trashcan:hover {
+  background-color: rgb(255, 91, 91);
+}
 
 i {
   pointer-events: none;
+}
+
+.done {
+  opacity: 0.5;
 }
 
 @keyframes scaleUp {
@@ -100,5 +111,10 @@ i {
   }
   to {
     transform: scale(1);
+  }
+}
+@keyframes scaleDown {
+  to {
+    transform: scale(0);
   }
 }/*# sourceMappingURL=style.css.map */
