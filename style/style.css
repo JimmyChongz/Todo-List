@@ -60,6 +60,7 @@ section {
 section div.todo {
   display: flex;
   width: 30vw;
+  padding: 0.5rem;
 }
 section div.todo p {
   background-color: white;
@@ -87,4 +88,17 @@ section div.todo button.complete {
 section div.todo button.trashcan {
   background-color: red;
   color: white;
+}
+
+i {
+  pointer-events: none;
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
 }/*# sourceMappingURL=style.css.map */

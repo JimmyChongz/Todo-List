@@ -24,6 +24,12 @@ add.addEventListener("click", e => {
     let completeButton = document.createElement("button");
     completeButton.classList.add("complete");
     completeButton.innerHTML = '<i class="fas fa-check"></i>';
+    completeButton.addEventListener("click", e => {
+        text.style.textDecoration = "line-through";
+        completeButton.addEventListener("click", () => {
+            text.style.textDecoration = 'none';
+        })
+    })
     
     let trashButton = document.createElement("button");
     trashButton.classList.add("trashcan");
@@ -32,4 +38,7 @@ add.addEventListener("click", e => {
     todo.appendChild(completeButton);
     todo.appendChild(trashButton);
     section.appendChild(todo);
+
+    todo.style.animation = "scaleUp 0.3s forwards";
 })
+

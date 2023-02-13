@@ -66,6 +66,7 @@ section {
     div.todo {
         display: flex;
         width: 30vw;
+        padding: 0.5rem;
 
         p {
             background-color: white;
@@ -99,5 +100,17 @@ section {
             background-color: red;
             color: white;
         }
+    }
+}
+
+i {
+    pointer-events: none;
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0);
+    } to {
+        transform: scale(1);
     }
 }
