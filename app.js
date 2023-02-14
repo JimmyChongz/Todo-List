@@ -17,7 +17,6 @@ add.addEventListener("click", e => {
     form.children[1].value = "";
     form.children[2].value = "";
 
-    // create a todo
     let todo = document.createElement("div");
     todo.classList.add("todo");
     let text = document.createElement("p");
@@ -29,7 +28,6 @@ add.addEventListener("click", e => {
     todo.appendChild(text);
     todo.appendChild(time);
 
-    // create green check and red trash can.
     let completeButton = document.createElement("button");
     completeButton.classList.add("complete");
     completeButton.innerHTML = '<i class="fas fa-check"></i>';
@@ -47,12 +45,12 @@ add.addEventListener("click", e => {
         todoItem.addEventListener("animationend", () => {
             let text = todoItem.children[0].innerText;
             let myListArr = JSON.parse(localStorage.getItem("list"));
-            myListArr.forEach( (item, index) => {
-                if ( item.todoText == text ) {
+            myListArr.forEach((item, index) => {
+                if (item.todoText == text) {
                     myListArr.splice(index, 1);
                     localStorage.setItem("list", JSON.stringify(myListArr));
                 }
-            } )
+            })
             todoItem.remove();
         })
     })
@@ -66,7 +64,7 @@ add.addEventListener("click", e => {
     let myTodo = {
         todoText: todoText,
         todoMonth: todoMonth,
-        todoDate: todoDate
+        todoDate: todoDate,
     }
 
     let myList = localStorage.getItem("list");
@@ -79,48 +77,52 @@ add.addEventListener("click", e => {
     }
 })
 
-let myListArr = JSON.parse(localStorage.getItem("list"));
-myListArr.map(item => {
-    let todo = document.createElement("div");
-    todo.classList.add("todo");
-    let text = document.createElement("p");
-    text.classList.add("todo-text");
-    text.innerText = item.todoText;
-    let time = document.createElement("p");
-    time.classList.add("todo-time");
-    time.innerText = item.todoMonth + "/" + item.todoDate;
-    todo.appendChild(text);
-    todo.appendChild(time);
+loadData();
 
-    let completeButton = document.createElement("button");
-    completeButton.classList.add("complete");
-    completeButton.innerHTML = '<i class="fas fa-check"></i>';
-    completeButton.addEventListener("click", e => {
-        let todoItem = e.target.parentElement;
-        todoItem.classList.toggle("done");
-    })
-    let trashButton = document.createElement("button");
-    trashButton.classList.add("trashcan");
-    trashButton.innerHTML = '<i class="fa-solid fa-trash"></i>';
-    trashButton.addEventListener("click", e => {
-        let todoItem = e.target.parentElement;
-        todoItem.style.animation = "scaleDown 0.3s forwards"
-        todoItem.addEventListener("animationend", () => {
-            let text = todoItem.children[0].innerText;
-            let myListArr = JSON.parse(localStorage.getItem("list"))
-            myListArr.forEach( (item, index) => {
-                if (item.todoText == text) {
-                    myListArr.splice(index, 1);
-                    localStorage.setItem("list", JSON.stringify(myListArr));
-                }
-            })
-            todoItem.remove();
+function loadData() {
+    let myListArr = JSON.parse(localStorage.getItem("list"));
+    myListArr.map(item => {
+        let todo = document.createElement("div");
+        todo.classList.add("todo");
+        let text = document.createElement("p");
+        text.classList.add("todo-text");
+        text.innerText = item.todoText;
+        let time = document.createElement("p");
+        time.classList.add("todo-time");
+        time.innerText = item.todoMonth + "/" + item.todoDate;
+        todo.appendChild(text);
+        todo.appendChild(time);
+
+        let completeButton = document.createElement("button");
+        completeButton.classList.add("complete");
+        completeButton.innerHTML = '<i class="fas fa-check"></i>';
+        completeButton.addEventListener("click", e => {
+            let todoItem = e.target.parentElement;
+            todoItem.classList.toggle("done");
         })
+        let trashButton = document.createElement("button");
+        trashButton.classList.add("trashcan");
+        trashButton.innerHTML = '<i class="fa-solid fa-trash"></i>';
+        trashButton.addEventListener("click", e => {
+            let todoItem = e.target.parentElement;
+            todoItem.style.animation = "scaleDown 0.3s forwards"
+            todoItem.addEventListener("animationend", () => {
+                let text = todoItem.children[0].innerText;
+                let myListArr = JSON.parse(localStorage.getItem("list"))
+                myListArr.forEach((item, index) => {
+                    if (item.todoText == text) {
+                        myListArr.splice(index, 1);
+                        localStorage.setItem("list", JSON.stringify(myListArr));
+                    }
+                })
+                todoItem.remove();
+            })
+        })
+        todo.appendChild(completeButton);
+        todo.appendChild(trashButton);
+        section.appendChild(todo);
     })
-    todo.appendChild(completeButton);
-    todo.appendChild(trashButton);
-    section.appendChild(todo);
-})
+}
 
 function mergeSort(arr) {
     if (arr.length === 1) {
@@ -138,15 +140,15 @@ function merge(left, right) {
     let i = 0;
     let j = 0;
 
-    while ( i < left.length && j < right.length ) {
-        if (left[i].todoMonth < right[j].todoMonth ) {
+    while (i < left.length && j < right.length) {
+        if (Number(left[i].todoMonth) < Number(right[j].todoMonth)) {
             result.push(left[i]);
             i++;
-        } else if ( left[i].todoMonth > right[j].todoMonth ) {
+        } else if (Number(left[i].todoMonth) > Number(right[j].todoMonth)) {
             result.push(right[j]);
             j++;
-        } else if ( left[i].todoMonth == right[j].todoMonth ) {
-            if ( left[i].todoDate < right[j].todoDate ) {
+        } else if (Number(left[i].todoMonth) == Number(right[j].todoMonth)) {
+            if (Number(left[i].todoDate) < Number(right[j].todoDate)) {
                 result.push(left[i]);
                 i++;
             } else {
@@ -156,12 +158,12 @@ function merge(left, right) {
         }
     }
 
-    while ( i < left.length ) {
+    while (i < left.length) {
         result.push(left[i]);
         i++;
     }
 
-    while ( j < right.length ) {
+    while (j < right.length) {
         result.push(right[j]);
         j++;
     }
@@ -169,4 +171,15 @@ function merge(left, right) {
     return result;
 }
 
-console.log(mergeSort(JSON.parse(localStorage.getItem("list"))));
+let button = document.querySelector("div.sort button");
+button.addEventListener("click", () => {
+    let sortedArr = mergeSort(JSON.parse(localStorage.getItem("list")));
+    localStorage.setItem("list", JSON.stringify(sortedArr));
+
+    let length = section.children.length;
+    for ( let i = 0; i < length; i++ ) {
+        section.children[0].remove();
+    }
+
+    loadData();
+})
