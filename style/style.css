@@ -32,7 +32,6 @@ form button {
   padding: 0.25rem 0.5rem;
   margin: 0rem 0.5rem;
   font-size: 1.75rem;
-  border-radius: 15px;
 }
 form input[type=number] {
   width: 50px;
@@ -59,6 +58,8 @@ section {
 }
 section div.todo {
   display: flex;
+  align-items: center;
+  justify-content: center;
   width: 50vw;
   margin: 0.2rem 0rem;
   transition: all 0.5s;
@@ -103,6 +104,25 @@ i {
 
 .done {
   opacity: 0.5;
+}
+
+div.sort {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0rem;
+}
+div.sort button {
+  background-color: rgb(18, 188, 131);
+  color: white;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+}
+div.sort button:hover {
+  background-color: aquamarine;
+  color: black;
 }
 
 @keyframes scaleUp {

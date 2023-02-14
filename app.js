@@ -77,9 +77,6 @@ add.addEventListener("click", e => {
         myListArr.push(myTodo);
         localStorage.setItem("list", JSON.stringify(myListArr));
     }
-
-    console.log(JSON.parse(localStorage.getItem("list")));
-    
 })
 
 let myListArr = JSON.parse(localStorage.getItem("list"));
@@ -125,4 +122,51 @@ myListArr.map(item => {
     section.appendChild(todo);
 })
 
-// localStorage.clear();
+function mergeSort(arr) {
+    if (arr.length === 1) {
+        return arr;
+    } else {
+        let mid = Math.floor(arr.length / 2);
+        let left = arr.slice(0, mid);
+        let right = arr.slice(mid, arr.length);
+        return merge(mergeSort(left), mergeSort(right));
+    }
+}
+
+function merge(left, right) {
+    let result = [];
+    let i = 0;
+    let j = 0;
+
+    while ( i < left.length && j < right.length ) {
+        if (left[i].todoMonth < right[j].todoMonth ) {
+            result.push(left[i]);
+            i++;
+        } else if ( left[i].todoMonth > right[j].todoMonth ) {
+            result.push(right[j]);
+            j++;
+        } else if ( left[i].todoMonth == right[j].todoMonth ) {
+            if ( left[i].todoDate < right[j].todoDate ) {
+                result.push(left[i]);
+                i++;
+            } else {
+                result.push(right[j]);
+                j++;
+            }
+        }
+    }
+
+    while ( i < left.length ) {
+        result.push(left[i]);
+        i++;
+    }
+
+    while ( j < right.length ) {
+        result.push(right[j]);
+        j++;
+    }
+
+    return result;
+}
+
+console.log(mergeSort(JSON.parse(localStorage.getItem("list"))));
