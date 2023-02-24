@@ -6,149 +6,147 @@
 }
 
 body {
-    background: linear-gradient(90deg, rgb(84, 130, 255), rgb(100, 255, 134));
-}
-
-header {
-    height: 20vh;
+    background: linear-gradient(90deg, rgb(71, 72, 73), rgb(1, 43, 75));
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
 
     h1 {
+        text-align: center;
+        margin: 2rem 0rem;
+        color: rgb(247, 226, 223);
         font-size: 3rem;
     }
-}
 
-form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    input,
-    button {
-        border: none;
-        padding: 0.25rem 0.5rem;
-        margin: 0rem 0.5rem;
-        font-size: 1.75rem;
-    }
-
-    input[type="number"] {
-        width: 50px;
+    form {
         text-align: center;
-    }
 
-    /* Chrome, Safari, Edge, Opera */
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
-
-    /* Firefox */
-    input[type=number] {
-        -moz-appearance: textfield;
-    }
-
-    button {
-        cursor: pointer;
-        background-color: rgb(5, 165, 163);
-        color: white;
-    }
-}
-
-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    div.todo {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 50vw;
-        margin: 0.2rem 0rem;
-        transition: all 0.5s;
-
-        p {
-            background-color: white;
-            font-size: 1.75rem;
-            padding: 0.25rem 0.5rem;
-            font-size: 1.75rem;
+        input {
+            background-color: rgb(247, 226, 223);
+            font-size: 2rem;
+            border: white 1px solid;
+            padding: 0rem 0.5rem;
+            margin: 0.5rem 0rem;
         }
 
-        p.todo-text {
-            width: 50%;
+        input[type="text"] {
+            width: 60vw;
         }
 
-        p.todo-time {
-            width: 20%;
+        input[type="number"] {
+            width: 60px;
             text-align: center;
         }
 
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
         button {
-            padding: 0.25rem 0.5rem;
-            font-size: 1.75rem;
-            border: none;
+            font-size: 2rem;
+            padding: 0rem 1rem;
+            background-color: rgb(1, 16, 43);
+            color: white;
+            border: white 1px solid;
             cursor: pointer;
-        }
-
-        button.complete {
-            background-color: green;
-            color: white;
-
             &:hover {
-                background-color: rgb(27, 200, 27);
-            }
-        }
-
-        button.trashcan {
-            background-color: red;
-            color: white;
-
-            &:hover {
-                background-color: rgb(255, 91, 91);
+                background-color: rgb(47, 96, 151);
             }
         }
     }
-}
 
-i {
-    pointer-events: none;
-}
+    div.sort {
+        margin: 1rem 0rem;
+        button {
+            background-color: rgb(247, 226, 223);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bolder;
+            cursor: pointer;
+            &:hover {
+                background-color: white;
+            }
+        }
+    }
 
-.done {
-    opacity: 0.5;
-}
-
-div.sort {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 1rem 0rem;
-
-    button {
-        background-color: rgb(18, 188, 131);
+    section {
         color: white;
-        font-size: 1.5rem;
-        padding: 0.5rem 1rem;
-        border: none;
-        cursor: pointer;
+        width: 70%;
 
-        &:hover {
-            background-color: aquamarine;
-            color: black;
+        div.todo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0.5rem 0rem;
+            transition: all 0.5s;
+
+            p.todo-text {
+                width: 70%;
+                font-size: 2rem;
+                color: black;
+                padding: 0rem 0.5rem;
+                border: none;
+                background-color: rgb(247, 226, 223);
+            }
+
+            p.todo-time {
+                width: 30%;
+                font-size: 2rem;
+                color: black;
+                border: none;
+                background-color: rgb(247, 226, 223);
+                text-align: center;
+            }
+
+            button.complete {
+                background-color: rgb(9, 138, 9);
+                color: white;
+                border: none;
+                font-size: 2rem;
+                padding: 0rem 0.5rem;
+                cursor: pointer;
+                &:hover {
+                    background-color: rgb(14, 212, 14);
+                }
+            }
+
+            button.trash {
+                background-color: red;
+                color: white;
+                border: none;
+                font-size: 2rem;
+                padding: 0rem 0.5rem;
+                cursor: pointer;
+                &:hover {
+                    background-color: rgb(243, 105, 105);
+                }
+            }
         }
 
+        .done {
+            opacity: 0.5;
+        }
+
+        i {
+            pointer-events: none;
+        }
     }
 }
 
 @keyframes scaleUp {
     from {
         transform: scale(0);
-    }
-
-    to {
+    } to {
         transform: scale(1);
     }
 }
@@ -156,5 +154,104 @@ div.sort {
 @keyframes scaleDown {
     to {
         transform: scale(0);
+    }
+}
+
+@media screen and (max-width: 850px) {
+    body {
+        h1 {
+            font-size: 3rem;
+        }
+        form {
+            input {
+                font-size: 2rem;
+            }
+
+            input[type="text"] {
+                width: 68vw;
+            }
+
+            button {
+                font-size: 2rem;
+            }
+        }
+
+        div.sort {
+            button {
+                font-size: 1rem;
+            }
+        }
+
+        section {
+            div.todo {
+                p.todo-text {
+                    font-size: 2rem;
+                    min-width: 82%;
+                }
+                p.todo-time {
+                    font-size: 2rem;
+                    min-width: 28%;
+                }
+
+                button.complete {
+                    font-size: 2rem;
+                }
+                button.trash {
+                    font-size: 2rem;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    body {
+        h1 {
+            font-size: 2rem;
+        }
+        form {
+            input {
+                font-size: 1rem;
+            }
+
+            input[type="text"] {
+                width: 60vw;
+            }
+
+            input[type="number"] {
+                width: 35px;
+                text-align: center;
+            }
+
+            button {
+                font-size: 1rem;
+            }
+        }
+
+        div.sort {
+            button {
+                font-size: 0.8rem;
+            }
+        }
+
+        section {
+            div.todo {
+                p.todo-text {
+                    font-size: 0.8rem;
+                    min-width: 73%;
+                }
+                p.todo-time {
+                    font-size: 0.8rem;
+                    min-width: 30%;
+                }
+
+                button.complete {
+                    font-size: 0.8rem;
+                }
+                button.trash {
+                    font-size: 0.8rem;
+                }
+            }
+        }
     }
 }

@@ -6,123 +6,124 @@
 }
 
 body {
-  background: linear-gradient(90deg, rgb(84, 130, 255), rgb(100, 255, 134));
-}
-
-header {
-  height: 20vh;
+  background: linear-gradient(90deg, rgb(71, 72, 73), rgb(1, 43, 75));
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
-header h1 {
+body h1 {
+  text-align: center;
+  margin: 2rem 0rem;
+  color: rgb(247, 226, 223);
   font-size: 3rem;
 }
-
-form {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+body form {
+  text-align: center;
   /* Chrome, Safari, Edge, Opera */
   /* Firefox */
 }
-form input,
-form button {
-  border: none;
-  padding: 0.25rem 0.5rem;
-  margin: 0rem 0.5rem;
-  font-size: 1.75rem;
+body form input {
+  background-color: rgb(247, 226, 223);
+  font-size: 2rem;
+  border: white 1px solid;
+  padding: 0rem 0.5rem;
+  margin: 0.5rem 0rem;
 }
-form input[type=number] {
-  width: 50px;
+body form input[type=text] {
+  width: 60vw;
+}
+body form input[type=number] {
+  width: 60px;
   text-align: center;
 }
-form input::-webkit-outer-spin-button,
-form input::-webkit-inner-spin-button {
+body form input::-webkit-outer-spin-button,
+body form input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-form input[type=number] {
+body form input[type=number] {
   -moz-appearance: textfield;
 }
-form button {
-  cursor: pointer;
-  background-color: rgb(5, 165, 163);
+body form button {
+  font-size: 2rem;
+  padding: 0rem 1rem;
+  background-color: rgb(1, 16, 43);
   color: white;
-}
-
-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-section div.todo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50vw;
-  margin: 0.2rem 0rem;
-  transition: all 0.5s;
-}
-section div.todo p {
-  background-color: white;
-  font-size: 1.75rem;
-  padding: 0.25rem 0.5rem;
-  font-size: 1.75rem;
-}
-section div.todo p.todo-text {
-  width: 50%;
-}
-section div.todo p.todo-time {
-  width: 20%;
-  text-align: center;
-}
-section div.todo button {
-  padding: 0.25rem 0.5rem;
-  font-size: 1.75rem;
-  border: none;
+  border: white 1px solid;
   cursor: pointer;
 }
-section div.todo button.complete {
-  background-color: green;
-  color: white;
+body form button:hover {
+  background-color: rgb(47, 96, 151);
 }
-section div.todo button.complete:hover {
-  background-color: rgb(27, 200, 27);
-}
-section div.todo button.trashcan {
-  background-color: red;
-  color: white;
-}
-section div.todo button.trashcan:hover {
-  background-color: rgb(255, 91, 91);
-}
-
-i {
-  pointer-events: none;
-}
-
-.done {
-  opacity: 0.5;
-}
-
-div.sort {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+body div.sort {
   margin: 1rem 0rem;
 }
-div.sort button {
-  background-color: rgb(18, 188, 131);
-  color: white;
-  font-size: 1.5rem;
+body div.sort button {
+  background-color: rgb(247, 226, 223);
   padding: 0.5rem 1rem;
-  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bolder;
   cursor: pointer;
 }
-div.sort button:hover {
-  background-color: aquamarine;
+body div.sort button:hover {
+  background-color: white;
+}
+body section {
+  color: white;
+  width: 70%;
+}
+body section div.todo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem 0rem;
+  transition: all 0.5s;
+}
+body section div.todo p.todo-text {
+  width: 70%;
+  font-size: 2rem;
   color: black;
+  padding: 0rem 0.5rem;
+  border: none;
+  background-color: rgb(247, 226, 223);
+}
+body section div.todo p.todo-time {
+  width: 30%;
+  font-size: 2rem;
+  color: black;
+  border: none;
+  background-color: rgb(247, 226, 223);
+  text-align: center;
+}
+body section div.todo button.complete {
+  background-color: rgb(9, 138, 9);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 0rem 0.5rem;
+  cursor: pointer;
+}
+body section div.todo button.complete:hover {
+  background-color: rgb(14, 212, 14);
+}
+body section div.todo button.trash {
+  background-color: red;
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 0rem 0.5rem;
+  cursor: pointer;
+}
+body section div.todo button.trash:hover {
+  background-color: rgb(243, 105, 105);
+}
+body section .done {
+  opacity: 0.5;
+}
+body section i {
+  pointer-events: none;
 }
 
 @keyframes scaleUp {
@@ -136,5 +137,71 @@ div.sort button:hover {
 @keyframes scaleDown {
   to {
     transform: scale(0);
+  }
+}
+@media screen and (max-width: 850px) {
+  body h1 {
+    font-size: 3rem;
+  }
+  body form input {
+    font-size: 2rem;
+  }
+  body form input[type=text] {
+    width: 68vw;
+  }
+  body form button {
+    font-size: 2rem;
+  }
+  body div.sort button {
+    font-size: 1rem;
+  }
+  body section div.todo p.todo-text {
+    font-size: 2rem;
+    min-width: 82%;
+  }
+  body section div.todo p.todo-time {
+    font-size: 2rem;
+    min-width: 28%;
+  }
+  body section div.todo button.complete {
+    font-size: 2rem;
+  }
+  body section div.todo button.trash {
+    font-size: 2rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  body h1 {
+    font-size: 2rem;
+  }
+  body form input {
+    font-size: 1rem;
+  }
+  body form input[type=text] {
+    width: 60vw;
+  }
+  body form input[type=number] {
+    width: 35px;
+    text-align: center;
+  }
+  body form button {
+    font-size: 1rem;
+  }
+  body div.sort button {
+    font-size: 0.8rem;
+  }
+  body section div.todo p.todo-text {
+    font-size: 0.8rem;
+    min-width: 73%;
+  }
+  body section div.todo p.todo-time {
+    font-size: 0.8rem;
+    min-width: 30%;
+  }
+  body section div.todo button.complete {
+    font-size: 0.8rem;
+  }
+  body section div.todo button.trash {
+    font-size: 0.8rem;
   }
 }/*# sourceMappingURL=style.css.map */
