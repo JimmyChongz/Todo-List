@@ -14,18 +14,13 @@ add.addEventListener("click", (e) => {
     listArray.forEach((item) => {
         if (item.todoText === todoText) {
             i++;
+            todoText = tmpText + " (" + i + ")";
         }
-        todoText = tmpText + " (" + i + ")";
     });
 
     if (i != 1) {
         todoText = tmpText + " (" + i + ")";
     }
-
-    // if (todoText == "error") {
-    //     form.children[0].value = "";
-    //     return;
-    // }
 
     if (!todoText || !todoMonth || !todoDate || todoMonth > 12 || todoDate > 31) {
         alert("代辦事項及日期不能為空，或請輸入正確的日期!");
