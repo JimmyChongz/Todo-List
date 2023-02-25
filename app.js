@@ -9,18 +9,23 @@ add.addEventListener("click", (e) => {
     let todoDate = form.children[2].value;
 
     let listArray = JSON.parse(localStorage.getItem("list"));
+    let i = 1;
+    let tmpText = todoText;
     listArray.forEach((item) => {
         if (item.todoText === todoText) {
-            alert("對不起，目前尚未支援輸入相同的代辦事項。");
-            todoText = "error";
-            return;
+            i++;
         }
+        todoText = tmpText + " (" + i + ")";
     });
 
-    if (todoText == "error") {
-        form.children[0].value = "";
-        return;
+    if (i != 1) {
+        todoText = tmpText + " (" + i + ")";
     }
+
+    // if (todoText == "error") {
+    //     form.children[0].value = "";
+    //     return;
+    // }
 
     if (!todoText || !todoMonth || !todoDate || todoMonth > 12 || todoDate > 31) {
         alert("代辦事項及日期不能為空，或請輸入正確的日期!");
