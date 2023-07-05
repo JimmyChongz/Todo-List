@@ -9,18 +9,18 @@ add.addEventListener("click", (e) => {
     let todoDate = form.children[2].value;
 
     let listArray = JSON.parse(localStorage.getItem("list"));
-    let i = 1;
-    let tmpText = todoText;
-    listArray.forEach((item) => {
-        if (item.todoText === todoText) {
-            i++;
-            todoText = tmpText + " (" + i + ")";
-        }
-    });
+    // let i = 1;
+    // let tmpText = todoText;
+    // listArray.forEach((item) => {
+    //     if (item.todoText === todoText) {
+    //         i++;
+    //         todoText = tmpText + " (" + i + ")";
+    //     }
+    // });
 
-    if (i != 1) {
-        todoText = tmpText + " (" + i + ")";
-    }
+    // if (i != 1) {
+    //     todoText = tmpText + " (" + i + ")";
+    // }
 
     if (!todoText || !todoMonth || !todoDate || todoMonth > 12 || todoDate > 31) {
         alert("代辦事項及日期不能為空，或請輸入正確的日期!");
