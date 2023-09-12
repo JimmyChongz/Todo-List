@@ -1,8 +1,9 @@
-let add = document.querySelector("form button");
+let addIcon = document.querySelector("form button");
 let section = document.querySelector("section");
 let i = 1;
-add.addEventListener("click", (e) => {
+addIcon.addEventListener("click", (e) => {
   e.preventDefault();
+  console.log("click");
 
   let form = e.target.parentElement;
   let todoText = form.children[0].value;
@@ -10,15 +11,9 @@ add.addEventListener("click", (e) => {
   let todoDate = form.children[2].value;
 
   let listArray = JSON.parse(localStorage.getItem("list"));
-  let tmpText = todoText;
   listArray.forEach((item) => {
     if (item.todoText === todoText) {
-      i++;
-      if (i != 1) {
-        todoText = tmpText + " (" + i + ")";
-      } else {
-        todoText = tmpText + " (" + i + ")";
-      }
+      todoText = todoText + " (" + ++i + ")";
     }
   });
 
