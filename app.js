@@ -11,11 +11,13 @@ addIcon.addEventListener("click", (e) => {
   let todoDate = form.children[2].value;
 
   let listArray = JSON.parse(localStorage.getItem("list"));
-  listArray.forEach((item) => {
-    if (item.todoText === todoText) {
-      todoText = todoText + " (" + ++i + ")";
-    }
-  });
+  if (listArray) {
+    listArray.forEach((item) => {
+      if (item.todoText === todoText) {
+        todoText = todoText + " (" + ++i + ")";
+      }
+    });
+  }
 
   if (!todoText || !todoMonth || !todoDate || todoMonth > 12 || todoDate > 31) {
     alert("代辦事項及日期不能為空，或請輸入正確的日期!");
