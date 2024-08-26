@@ -12,9 +12,13 @@ body {
   align-items: center;
   flex-direction: column;
 }
+body #currentDate {
+  text-align: center;
+  color: rgb(247, 226, 223);
+}
 body h1 {
   text-align: center;
-  margin: 2rem 0rem;
+  margin: 2rem 0rem 0rem 0rem;
   color: rgb(247, 226, 223);
   font-size: 3rem;
 }

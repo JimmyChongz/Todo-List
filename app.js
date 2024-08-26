@@ -1,3 +1,15 @@
+document.addEventListener("DOMContentLoaded", () => {
+  let today = new Date();
+  let dateString = today.toLocaleDateString("zh-TW", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+  });
+
+  let currentDateElement = document.getElementById("currentDate");
+  currentDateElement.innerText = `今天日期: ${dateString}`;
+});
+
 let micButton = document.getElementById("mic");
 let todoInput = document.querySelector("input[type='text']");
 let recognition;
