@@ -1,4 +1,45 @@
-let addIcon = document.querySelector("form button");
+let micButton = document.getElementById("mic");
+let todoInput = document.querySelector("input[type='text']");
+let recognition;
+let isRecognizing = false;
+
+// 語音輸入功能
+micButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (isRecognizing) {
+      // 停止语音识别
+      recognition.stop();
+      micButton.innerHTML = '<i class="fas fa-microphone"></i>'; // 恢复按钮图标
+      isRecognizing = false;
+  } else {
+      // 开始语音识别
+      recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+      recognition.lang = "zh-TW"; // 设置语言为繁体中文
+      recognition.interimResults = false;
+      recognition.maxAlternatives = 1;
+
+      recognition.start();
+      micButton.innerHTML = '<i class="fa fa-spinner fa-pulse fa-fw"></i>'; // 显示停止图标
+      isRecognizing = true;
+
+      recognition.onresult = (event) => {
+          let speechResult = event.results[0][0].transcript;
+          todoInput.value = speechResult; // 将识别结果填入输入框
+          recognition.stop();
+      };
+
+      recognition.onerror = (event) => {
+          console.error("Speech recognition error:", event.error);
+      };
+
+      recognition.onend = () => {
+          micButton.innerHTML = '<i class="fas fa-microphone"></i>'; // 恢复按钮图标
+          isRecognizing = false;
+      };
+  }
+});
+
+let addIcon = document.getElementById("add");
 let section = document.querySelector("section");
 let i = 1;
 addIcon.addEventListener("click", (e) => {
