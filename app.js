@@ -7,35 +7,35 @@ let isRecognizing = false;
 micButton.addEventListener("click", (e) => {
   e.preventDefault();
   if (isRecognizing) {
-      // 停止语音识别
-      recognition.stop();
-      micButton.innerHTML = '<i class="fas fa-microphone"></i>'; // 恢复按钮图标
-      isRecognizing = false;
+    // 停止語音辨識
+    recognition.stop();
+    micButton.innerHTML = '<i class="fas fa-microphone"></i>';
+    isRecognizing = false;
   } else {
-      // 开始语音识别
-      recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-      recognition.lang = "zh-TW"; // 设置语言为繁体中文
-      recognition.interimResults = false;
-      recognition.maxAlternatives = 1;
+    // 開始語音辨識
+    recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = "zh-TW";
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
 
-      recognition.start();
-      micButton.innerHTML = '<i class="fa fa-spinner fa-pulse fa-fw"></i>'; // 显示停止图标
-      isRecognizing = true;
+    recognition.start();
+    micButton.innerHTML = '<i class="fa fa-spinner fa-pulse fa-fw"></i>';
+    isRecognizing = true;
 
-      recognition.onresult = (event) => {
-          let speechResult = event.results[0][0].transcript;
-          todoInput.value = speechResult; // 将识别结果填入输入框
-          recognition.stop();
-      };
+    recognition.onresult = (event) => {
+      let speechResult = event.results[0][0].transcript;
+      todoInput.value = speechResult;
+      recognition.stop();
+    };
 
-      recognition.onerror = (event) => {
-          console.error("Speech recognition error:", event.error);
-      };
+    recognition.onerror = (event) => {
+      console.error("Speech recognition error:", event.error);
+    };
 
-      recognition.onend = () => {
-          micButton.innerHTML = '<i class="fas fa-microphone"></i>'; // 恢复按钮图标
-          isRecognizing = false;
-      };
+    recognition.onend = () => {
+      micButton.innerHTML = '<i class="fas fa-microphone"></i>';
+      isRecognizing = false;
+    };
   }
 });
 
@@ -44,12 +44,15 @@ let section = document.querySelector("section");
 let i = 1;
 addIcon.addEventListener("click", (e) => {
   e.preventDefault();
-  console.log("click");
 
   let form = e.target.parentElement;
   let todoText = form.children[0].value;
   let todoMonth = form.children[1].value;
   let todoDate = form.children[2].value;
+  if (!form) {
+    console.error("Form element not found.");
+    return;
+  }
 
   let listArray = JSON.parse(localStorage.getItem("list"));
   if (listArray) {
