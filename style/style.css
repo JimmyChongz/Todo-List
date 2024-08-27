@@ -35,7 +35,7 @@ body form input {
   margin: 0.5rem 0rem;
 }
 body form input[type=text] {
-  width: 60vw;
+  width: 70vw;
 }
 body form input[type=number] {
   width: 60px;
@@ -178,6 +178,9 @@ body section i {
     font-size: 2rem;
     min-width: 28%;
   }
+  body section div.todo button.play {
+    font-size: 2rem;
+  }
   body section div.todo button.complete {
     font-size: 2rem;
   }
@@ -212,6 +215,9 @@ body section i {
   body section div.todo p.todo-time {
     font-size: 0.8rem;
     min-width: 30%;
+  }
+  body section div.todo button.play {
+    font-size: 0.8rem;
   }
   body section div.todo button.complete {
     font-size: 0.8rem;

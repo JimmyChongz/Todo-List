@@ -143,16 +143,15 @@ addIcon.addEventListener("click", (e) => {
 
   trashButton.addEventListener("click", (e) => {
     let Item = e.target.parentElement;
-    let Text = Item.children[0].innerText;
+    let Text = Item.querySelector('.todo-text').innerText;
+  
+    // 更新 localStorage
+    let listArray = JSON.parse(localStorage.getItem("list"));
+    listArray = listArray.filter(item => item.todoText !== Text);
+    localStorage.setItem("list", JSON.stringify(listArray));
+  
     Item.style.animation = "scaleDown 0.3s forwards";
     Item.addEventListener("animationend", () => {
-      let listArray = JSON.parse(localStorage.getItem("list"));
-      listArray.forEach((item, index) => {
-        if (item.todoText == Text) {
-          listArray.splice(index, 1);
-          localStorage.setItem("list", JSON.stringify(listArray));
-        }
-      });
       Item.remove();
     });
   });
@@ -236,16 +235,15 @@ function loadData() {
 
     trashButton.addEventListener("click", (e) => {
       let Item = e.target.parentElement;
-      let Text = Item.children[0].innerText;
+      let Text = Item.querySelector('.todo-text').innerText;
+    
+      // 更新 localStorage
+      let listArray = JSON.parse(localStorage.getItem("list"));
+      listArray = listArray.filter(item => item.todoText !== Text);
+      localStorage.setItem("list", JSON.stringify(listArray));
+    
       Item.style.animation = "scaleDown 0.3s forwards";
       Item.addEventListener("animationend", () => {
-        let listArray = JSON.parse(localStorage.getItem("list"));
-        listArray.forEach((item, index) => {
-          if (item.todoText == Text) {
-            listArray.splice(index, 1);
-            localStorage.setItem("list", JSON.stringify(listArray));
-          }
-        });
         Item.remove();
       });
     });

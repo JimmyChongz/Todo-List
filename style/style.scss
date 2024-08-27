@@ -36,7 +36,7 @@ body {
         }
 
         input[type="text"] {
-            width: 60vw;
+            width: 70vw;
         }
 
         input[type="number"] {
@@ -210,6 +210,10 @@ body {
                     min-width: 28%;
                 }
 
+                button.play {
+                    font-size: 2rem;
+                }
+
                 button.complete {
                     font-size: 2rem;
                 }
@@ -260,6 +264,10 @@ body {
                 p.todo-time {
                     font-size: 0.8rem;
                     min-width: 30%;
+                }
+
+                button.play {
+                    font-size: 0.8rem;
                 }
 
                 button.complete {
