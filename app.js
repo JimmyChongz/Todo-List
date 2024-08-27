@@ -125,7 +125,8 @@ addIcon.addEventListener("click", (e) => {
   });
 
   completeButton.addEventListener("click", (e) => {
-    let Text = e.target.parentElement.children[0].innerText;
+    e.stopPropagation();
+    let Text = e.target.parentElement.querySelector(".todo-text").innerText; // 使用更明确的选择器
     let listArray = JSON.parse(localStorage.getItem("list"));
     listArray.forEach((item) => {
       if (item.todoText == Text) {
@@ -218,15 +219,17 @@ function loadData() {
     }
 
     completeButton.addEventListener("click", (e) => {
-      let Text = e.target.parentElement.children[0].innerText;
+      e.stopPropagation();
+      let Text = e.target.parentElement.querySelector(".todo-text").innerText; // 使用更明确的选择器
+      let listArray = JSON.parse(localStorage.getItem("list"));
       listArray.forEach((item) => {
         if (item.todoText == Text) {
           if (item.finish === false) {
-            item.finish = true;
             todo.classList.add("done");
+            item.finish = true;
           } else {
-            item.finish = false;
             todo.classList.remove("done");
+            item.finish = false;
           }
           localStorage.setItem("list", JSON.stringify(listArray));
         }
