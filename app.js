@@ -207,9 +207,9 @@ function loadData() {
     trashButton.classList.add("trash");
     trashButton.innerHTML = '<i class="fa-solid fa-trash"></i>';
 
+    todo.appendChild(playButton);
     todo.appendChild(todoText);
     todo.appendChild(todoTime);
-    todo.appendChild(playButton); // 添加播放按钮到Todo
     todo.appendChild(completeButton);
     todo.appendChild(trashButton);
     section.appendChild(todo);
