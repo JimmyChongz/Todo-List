@@ -86,7 +86,7 @@ body {
 
     section {
         color: white;
-        width: 70%;
+        width: 75%;
 
         div.todo {
             display: flex;
@@ -111,6 +111,18 @@ body {
                 border: none;
                 background-color: rgb(247, 226, 223);
                 text-align: center;
+            }
+
+            button.play {
+                background-color: rgb(237, 148, 39);
+                color: white;
+                border: none;
+                font-size: 2rem;
+                padding: 0rem 0.5rem;
+                cursor: pointer;
+                &:hover {
+                    background-color: rgb(251, 172, 0);
+                }
             }
 
             button.complete {

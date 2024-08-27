@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   let today = new Date();
   let dateString = today.toLocaleDateString("zh-TW", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
   });
 
   let currentDateElement = document.getElementById("currentDate");
@@ -54,6 +54,7 @@ micButton.addEventListener("click", (e) => {
 let addIcon = document.getElementById("add");
 let section = document.querySelector("section");
 let i = 1;
+
 addIcon.addEventListener("click", (e) => {
   e.preventDefault();
 
@@ -100,7 +101,13 @@ addIcon.addEventListener("click", (e) => {
   let trashButton = document.createElement("button");
   trashButton.classList.add("trash");
   trashButton.innerHTML = '<i class="fa-solid fa-trash"></i>';
+  
+  // 播放Todo内容
+  let playButton = document.createElement("button");
+  playButton.classList.add("play");
+  playButton.innerHTML = '<i class="fas fa-play"></i>';
 
+  todo.appendChild(playButton); // 添加播放按钮
   todo.appendChild(text);
   todo.appendChild(time);
   todo.appendChild(completeButton);
@@ -108,6 +115,14 @@ addIcon.addEventListener("click", (e) => {
   section.appendChild(todo);
 
   todo.style.animation = "scaleUp 0.3s forwards";
+
+  // 添加播放功能
+  playButton.addEventListener("click", () => {
+    let textToRead = text.innerText;
+    let utterance = new SpeechSynthesisUtterance(textToRead);
+    utterance.lang = "zh-TW";
+    speechSynthesis.speak(utterance);
+  });
 
   completeButton.addEventListener("click", (e) => {
     let Text = e.target.parentElement.children[0].innerText;
@@ -172,6 +187,19 @@ function loadData() {
     let todoTime = document.createElement("p");
     todoTime.classList.add("todo-time");
     todoTime.innerText = item.todoMonth + "月" + "/" + item.todoDate + "日";
+
+    // 播放按钮
+    let playButton = document.createElement("button");
+    playButton.classList.add("play");
+    playButton.innerHTML = '<i class="fas fa-play"></i>';
+    
+    // 添加播放功能
+    playButton.addEventListener("click", () => {
+      let utterance = new SpeechSynthesisUtterance(item.todoText);
+      utterance.lang = "zh-TW";
+      speechSynthesis.speak(utterance);
+    });
+
     let completeButton = document.createElement("button");
     completeButton.classList.add("complete");
     completeButton.innerHTML = '<i class="fas fa-check"></i>';
@@ -181,6 +209,7 @@ function loadData() {
 
     todo.appendChild(todoText);
     todo.appendChild(todoTime);
+    todo.appendChild(playButton); // 添加播放按钮到Todo
     todo.appendChild(completeButton);
     todo.appendChild(trashButton);
     section.appendChild(todo);
@@ -234,39 +263,35 @@ function mergeSort(arr) {
   }
 }
 
-function merge(left, right) {
+function merge(arr1, arr2) {
   let result = [];
   let i = 0;
   let j = 0;
-
-  while (i < left.length && j < right.length) {
-    if (Number(left[i].todoMonth) < Number(right[j].todoMonth)) {
-      result.push(left[i]);
-      i++;
-    } else if (Number(left[i].todoMonth) > Number(right[j].todoMonth)) {
-      result.push(right[j]);
+  while (i < arr1.length && j < arr2.length) {
+    if (Number(arr1[i].todoMonth) > Number(arr2[j].todoMonth)) {
+      result.push(arr2[j]);
       j++;
-    } else if (Number(left[i].todoMonth) == Number(right[j].todoMonth)) {
-      if (Number(left[i].todoDate) < Number(right[j].todoDate)) {
-        result.push(left[i]);
-        i++;
-      } else {
-        result.push(right[j]);
+    } else if (Number(arr1[i].todoMonth) < Number(arr2[j].todoMonth)) {
+      result.push(arr1[i]);
+      i++;
+    } else if (Number(arr1[i].todoMonth) == Number(arr2[j].todoMonth)) {
+      if (Number(arr1[i].todoDate) > Number(arr2[j].todoDate)) {
+        result.push(arr2[j]);
         j++;
+      } else {
+        result.push(arr1[i]);
+        i++;
       }
     }
   }
-
-  while (i < left.length) {
-    result.push(left[i]);
+  while (i < arr1.length) {
+    result.push(arr1[i]);
     i++;
   }
-
-  while (j < right.length) {
-    result.push(right[j]);
+  while (j < arr2.length) {
+    result.push(arr2[j]);
     j++;
   }
-
   return result;
 }
 

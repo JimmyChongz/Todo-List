@@ -76,7 +76,7 @@ body div.sort button:hover {
 }
 body section {
   color: white;
-  width: 70%;
+  width: 75%;
 }
 body section div.todo {
   display: flex;
@@ -100,6 +100,17 @@ body section div.todo p.todo-time {
   border: none;
   background-color: rgb(247, 226, 223);
   text-align: center;
+}
+body section div.todo button.play {
+  background-color: rgb(237, 148, 39);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 0rem 0.5rem;
+  cursor: pointer;
+}
+body section div.todo button.play:hover {
+  background-color: rgb(251, 172, 0);
 }
 body section div.todo button.complete {
   background-color: rgb(9, 138, 9);
