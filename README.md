@@ -24,6 +24,10 @@ A simple and intuitive todo list application for managing your daily tasks effic
 
 - A modern web browser (Chrome, Firefox, Safari, Edge)
 
+### Live Demo
+
+[Click Here](https://jimmychongz.github.io/Todo-List/)
+
 ### Installation
 
 1. Clone the repository:
